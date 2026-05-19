@@ -1,6 +1,40 @@
 import { useState, useEffect, useRef } from "react";
 import { LOGO } from "./logoData.js";
 
+// Inject PWA manifest dynamically
+const manifestData = {
+  name: "Family Financial Ledger",
+  short_name: "FamLedger",
+  description: "TealMarshmallow Family Emergency Financial Ledger",
+  start_url: "/",
+  display: "standalone",
+  background_color: "#f4fdfb",
+  theme_color: "#7accc2",
+  orientation: "portrait-primary",
+  icons: [{ src: LOGO, sizes: "512x512", type: "image/png", purpose: "any maskable" }]
+};
+const manifestBlob = new Blob([JSON.stringify(manifestData)], { type: "application/json" });
+const manifestURL = URL.createObjectURL(manifestBlob);
+const manifestLink = document.createElement("link");
+manifestLink.rel = "manifest";
+manifestLink.href = manifestURL;
+document.head.appendChild(manifestLink);
+
+// Register inline service worker
+if ("serviceWorker" in navigator) {
+  const swCode = `
+    const CACHE = "tm-ledger-v1";
+    self.addEventListener("install", e => { self.skipWaiting(); });
+    self.addEventListener("activate", e => { self.clients.claim(); });
+    self.addEventListener("fetch", e => {
+      e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
+    });
+  `;
+  const swBlob = new Blob([swCode], { type: "application/javascript" });
+  const swURL = URL.createObjectURL(swBlob);
+  navigator.serviceWorker.register(swURL, { scope: "/" }).catch(console.warn);
+}
+
 const INST_PAL = {
   "navy federal": ["#0a3161", "#fff"],
   "cash app": ["#00d632", "#fff"],
