@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { LOGO } from "./logoData.js";
 
 const INST_PAL = {
   "navy federal": ["#0a3161", "#fff"],
@@ -126,7 +127,7 @@ function PinScreen({ mode, onSuccess, onSetPin }) {
 
       {/* Cover image */}
       <div style={{width:130,height:130,borderRadius:"50%",overflow:"hidden",border:"4px solid #c8ece6",boxShadow:"0 4px 24px rgba(122,204,194,.25)",marginBottom:20,flexShrink:0}}>
-        <img src="/icon.png" alt="TealMarshmallow" style={{width:"100%",height:"100%",objectFit:"cover"}} />
+        <img src={LOGO} alt="TealMarshmallow" style={{width:"100%",height:"100%",objectFit:"cover"}} />
       </div>
 
       <div style={{fontFamily:"Georgia,serif",fontSize:20,fontWeight:500,color:"#2d7a70",marginBottom:4}}>✦ Family Financial Ledger</div>
@@ -166,7 +167,7 @@ function SplashScreen({ onDone }) {
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600&display=swap');@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}`}</style>
       <div style={{animation:"fadeUp .7s ease both",display:"flex",flexDirection:"column",alignItems:"center",gap:18}}>
         <div style={{width:160,height:160,borderRadius:32,overflow:"hidden",border:"4px solid rgba(255,255,255,.7)",boxShadow:"0 8px 40px rgba(122,204,194,.35)",animation:"pulse 2s ease infinite"}}>
-          <img src="/icon.png" alt="TealMarshmallow" style={{width:"100%",height:"100%",objectFit:"cover"}} />
+          <img src={LOGO} alt="TealMarshmallow" style={{width:"100%",height:"100%",objectFit:"cover"}} />
         </div>
         <div style={{animation:"fadeUp .7s .3s ease both",opacity:0,textAlign:"center"}}>
           <div style={{fontFamily:"Georgia,serif",fontSize:24,fontWeight:500,color:"#2d7a70",marginBottom:4}}>✦ Family Financial Ledger</div>
@@ -337,7 +338,7 @@ export default function App() {
 
         {/* Header with logo */}
         <div style={s.header}>
-          <div style={s.headerImg}><img src="/icon.png" alt="logo" style={{width:"100%",height:"100%",objectFit:"cover"}}/></div>
+          <div style={s.headerImg}><img src={LOGO} alt="logo" style={{width:"100%",height:"100%",objectFit:"cover"}}/></div>
           <div>
             <h1 style={s.h1}>✦ Family Financial Ledger</h1>
             <p style={s.subtext}>Your family's accounts, safe in one place.</p>
