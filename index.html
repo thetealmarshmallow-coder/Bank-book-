@@ -4,24 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#7accc2" />
-    <meta name="description" content="TealMarshmallow Family Financial Ledger — your family's accounts, all in one safe place." />
+    <meta name="description" content="TealMarshmallow Family Emergency Financial Ledger" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Family Ledger" />
-    <link rel="manifest" href="/manifest.json" />
-    <link rel="apple-touch-icon" href="/icon.png" />
     <title>✦ Family Financial Ledger</title>
   </head>
   <body style="margin:0;background:#f4fdfb;">
     <div id="root"></div>
     <script type="module" src="/main.jsx"></script>
-    <script>
-      if ("serviceWorker" in navigator) {
-        window.addEventListener("load", () => {
-          navigator.serviceWorker.register("/sw.js");
-        });
-      }
-    </script>
   </body>
 </html>
